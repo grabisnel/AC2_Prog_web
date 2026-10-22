@@ -1,0 +1,14 @@
+<button [routerLink]="['']">Cadastrar</button>
+
+@for (item of getPedidos(); track $index) {
+<div>
+    <p>{{item.id}}</p>
+    <p [style.text-decoration]="item.status === 'Entregue' ? 'line-through' : 'none'">{{item.nome}}</p>
+    <p>{{item.status}}</p>
+    <button (click)="pedidoService.pedidoAceito(item.id)">Aceitar</button>
+    <button (click)="pedidoService.pedidoEmPreparo(item.id)">Em preparo</button>
+    <button (click)="pedidoService.pedidoSaiuParaEntrega(item.id)">Em Rota</button>
+    <button (click)="pedidoService.pedidoEntregue(item.id)">Entregue</button>
+    <button (click)="pedidoService.remover(item.id)">Cancelar Pedido</button>
+</div>
+}
